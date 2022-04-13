@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>DUNE</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* 滾動狀態:滑順 */
+            scroll-behavior: smooth;
+        }
+
+        #nav {
+            background-color: rgb(65, 59, 46);
+            width: calc(80% - 0px);
+            height: 60px;
+            margin: auto;
+            padding: 0px;
+            position: fixed;
+            left: 10%;
+            z-index: 99;
+        }
+
+        .logo-set {
+            background-color: aquamarine;
+            width: 60px;
+            height: 60px;
+            float: left;
+            border-radius: 50%;
+        }
+
+        .logo {
+            background-image: url(https://ichef.bbci.co.uk/images/ic/640x360/p091d5sp.jpg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .logo:hover {
+            /* 當指到物件時 隱藏物件 不占位置 */
+            /* display: none; */
+            /* 當指到物件時 改變其比例 */
+            transform: scale(1.5);
+
+        }
+
+        .nav-btns {
+            /* background-color: blue; */
+            /* width: 300px;
+            height: 100px; */
+            float: right;
+            padding: 0px;
+            margin-top: 0px;
+        }
+
+        .btn-1 {
+            display: block;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0);
+            /* float: left; */
+            margin: 0px;
+            padding: 0;
+            text-align: center;
+            line-height: 60px;
+            /* border-radius: 5%; */
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
+            transition-duration: 0.3s;
+            /* border: 1px solid rgba(0, 0, 0, 0.13); */
+            transition-property: font;
+            text-shadow: 1px 1px 6px rgb(255, 227, 124);
+        }
+
+
+        .btn-1:hover {
+            background-color: rgba(0, 0, 0, 0.300);
+            transition-duration: 0.3s;
+            color: rgb(219, 157, 0);
+            text-shadow: 0.2px 0.5px rgba(80, 58, 2, 0.884);
+            font-size: 25px;
+            text-shadow: 1px 1px 6px rgb(223, 199, 140);
+
+        }
+
+        .btn-2 {
+            display: block;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0);
+            /* float: left; */
+            margin: 0px;
+            padding: 0;
+            text-align: center;
+            line-height: 60px;
+            /* border-radius: 5%; */
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
+            transition-duration: 0.3s;
+            /* border: 1px solid rgba(0, 0, 0, 0.13); */
+            transition-property: font;
+            text-shadow: 1px 1px 6px rgb(255, 227, 124);
+
+        }
+
+
+        .btn-2:hover {
+            background-color: rgba(0, 0, 0, 0.600);
+            transition-duration: 0.3s;
+            color: rgb(219, 157, 0);
+            text-shadow: 0.2px 0.5px rgba(80, 58, 2, 0.884);
+            font-size: 25px;
+            text-shadow: 1px 1px 6px rgb(223, 199, 140);
+
+        }
+
+        .btn-3 {
+            display: block;
+            width: 100%;
+            height: 60px;
+            background-color: rgba(0, 0, 0, 0);
+            /* float: left; */
+            margin: 0px;
+            padding: 0;
+            text-align: center;
+            line-height: 60px;
+            /* border-radius: 5%; */
+            color: rgb(255, 255, 255);
+            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
+            transition-duration: 0.3s;
+            /* border: 1px solid rgba(0, 0, 0, 0.13); */
+            transition-property: font;
+            text-shadow: 1px 1px 6px rgb(255, 227, 124);
+
+        }
+
+
+        .btn-3:hover {
+            background-color: rgba(0, 0, 0, 0.900);
+            transition-duration: 0.3s;
+            color: rgb(219, 157, 0);
+            text-shadow: 0.2px 0.5px rgba(80, 58, 2, 0.884);
+            font-size: 25px;
+            text-shadow: 1px 1px 6px rgb(223, 199, 140);
+
+        }
+
+        #container {
+            /* background-color: burlywood; */
+            width: 80%;
+            /* height: 800px; */
+            margin: auto;
+
+        }
+
+        .area {
+            /* background-color: coral; */
+            width: 100%;
+            height: 50vh;
+            padding-top: 50vh;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .mask {
+            background-color: rgba(0, 0, 0, 0.541);
+            /* width: 100%; */
+            height: 50vh;
+            position: relative;
+        }
+
+        .btn2 {
+            width: 100px;
+            height: 40px;
+            background-color: rgba(155, 128, 62, 0.884);
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            /* 遷移 移動(自身X值大小,y值大小) */
+            transform: translate(-50%, -50%);
+            border-radius: 5%;
+            color: rgb(2, 2, 2);
+            font-size: 20px;
+            font-family: 'Rajdhani', sans-serif;
+            text-align: center;
+            line-height: 43px;
+            border: 3px solid rgba(59, 48, 21, 0.527);
+
+        }
+
+        .btn2:hover {
+            background-color: rgba(97, 70, 2, 0.884);
+            color: rgb(255, 255, 255);
+            border: 3px solid rgba(112, 93, 45, 0.884);
+        }
+        
+
+        .img1 {
+            background-image: url(https://cdnb.artstation.com/p/assets/images/images/015/715/411/large/armando-savoia-1a.jpg?1549371239);
+        }
+
+        .img2 {
+            background-image: url(https://cdnb.artstation.com/p/assets/images/images/036/283/231/large/isaac-zuren-dune-asylum-v002.jpg?1617221786);
+        }
+
+        .img3 {
+            background-image: url(https://cdnb.artstation.com/p/assets/images/images/029/311/621/large/nana-dhebuadze-3.jpg?1597142128);
+        }
+
+
+
+        #area-1 {}
+
+        #area-2 {}
+
+        #area-3 {}
+
+        .go-top {
+            position: fixed;
+            right: 10%;
+            bottom: 0;
+            background-color: rgba(155, 128, 62, 0.884);
+            color: black;
+            font-family: 'Rajdhani', sans-serif;
+            border-radius: 5%;
+            font-size: 17px;
+            transition-duration: 0.7s;
+        }
+
+        .go-top:hover {
+            background-color: rgba(53, 53, 52, 0.884);
+            transition-duration: 0.7s;
+            color: rgba(155, 128, 62, 0.884);
+
+        }
+
+        a {
+            text-decoration: none;
+            transition-duration: 0.7s;
+        }
+
+        a:hover {
+            /* background-color: rgba(0, 0, 0, 0.521); */
+            transition-duration: 0.7s;
+            color: rgb(255, 255, 255);
+        }
+
+        /* 當連結被拜訪後... */
+        /* 改變拜訪後字體顏色 */
+        a:visited {
+            /* color: rgb(0, 0, 0); */
+        }
+
+        a:link {
+            /* color:rgb(0, 0, 0); */
+        }
+
+        /* 啟動後 */
+        a:active {
+            background-color: rgba(80, 58, 2, 0.884);
+        }
+
+        .button {
+            background-color: black;
+            color: azure;
+        }
+
+        .title {
+            font-size: 53px;
+            letter-spacing: 15px;
+            color: rgb(255, 255, 255);
+            font-family: 'Rajdhani', sans-serif;
+            float: left;
+            line-height: 65px;
+            font-weight: 300;
+            margin-left: 15px;
+            transition: .5s ease-in-out;
+            text-shadow: 1px 1px 4px rgb(175, 137, 0);
+
+        }
+
+        .title:hover {
+            color: rgb(223, 186, 95);
+            font-weight: 300;
+            text-shadow: 0.2px 0.5px 3px rgb(223, 199, 140);
+
+        }
+
+        #toggler:checked+label .box {
+            background-color: cyan;
+        }
+
+        #toggler {
+            display: none;
+        }
+
+        #toggler:checked+label .hamburger-container span:nth-child(2) {
+            transform: rotate(-45deg);
+            top: -4px;
+            transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
+        }
+
+        #toggler:checked+label .hamburger-container span:nth-child(1) {
+            transform: rotate(45deg);
+            top: 4px;
+            transition: top .3s ease-in-out, transform .3s ease-in-out .3s;
+        }
+
+        .hamburger-container {
+            display: block;
+            width: 40px;
+            height: 40px;
+            float: right;
+            position: absolute;
+            top: 0px;
+            right: 10px;
+            padding: 25px 0px 0px 0px ;
+        }
+
+        .hamburger-container span {
+            display: block;
+            height: 1px;
+            background-color: white;
+            position: relative;
+            transition: transform .3s ease-in-out, top .3s ease-in-out .3s;
+            top: 0;
+            
+        }
+        .hamburger-container:hover ~ .hamburger-container span {
+            transition-duration: 0.3s;
+            background-color: rgb(219, 157, 0);
+            
+        }
+
+        .hamburger-container span:nth-child(2) {
+            margin-top: 7px;
+        }
+
+
+        .nav-items {
+            background-color: rgba(51, 40, 13, 0.76);
+            width: 20%;
+            height: 180px;
+            position: absolute;
+            top: 60px;
+            right: 0px;
+            transform: scaleY(0);
+            transition: transform .3s ease-in-out .3s, opacity .3s ease-in-out .3s;
+            transform-origin: 50% 0%;
+            opacity: 0;
+        }
+
+        #toggler:checked ~.nav-items {
+            transform: scaleY(1);
+            opacity: 1;
+        }
+
+        ul {
+            margin-top: 3px;
+        }
+
+        ul li {
+            color: azure;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav">
+
+        <div id="id" class="logo-set logo"></div>
+        <div class="title">DUNE</div>
+        <input type="checkbox" id="toggler">
+        <label for="toggler">
+            <div class="hamburger-container">
+                <span></span>
+                <span></span>
+            </div>
+        </label>
+        <div class="nav-items"><a href="#area-1" id="btn" class="btn-1">DOWNLOAD</a>
+            <a href="#area-2" id="btn" class="btn-2">DUNE BGM</a>
+            <a href="#area-3" id="btn" class="btn-3">FULL SIZE</a>
+        </div>
+        <div class="nav-btns">
+            <!-- <a href=""></a> -->
+
+
+        </div>
+
+    </div>
+    </div>
+    <div id="container">
+        <div id="area-1" class="area img1">
+            <div class="mask">
+                <a href="/img/armando-savoia-1a (1).jpg" class="btn2" download>DOWNLOAD</a>
+            </div>
+        </div>
+        <div id="area-2" class="area img2">
+            <div class="mask">
+                <a href="https://www.youtube.com/watch?v=uTmBeR32GRA&ab_channel=WaterTowerMusic" target="_blank"
+                    class="btn2">DUNE BGM</a>
+            </div>
+        </div>
+        <div id="area-3" class="area img3">
+            <div class="mask">
+                <a href="https://cdnb.artstation.com/p/assets/images/images/029/311/621/large/nana-dhebuadze-3.jpg?1597142128"
+                    target="_blank" class="btn2">FULL SIZE</a>
+            </div>
+
+        </div>
+
+    </div>
+    <a href="#" class="go-top">back top</a>
+    <!--<div>
+        開網址
+        <a href="https://www.google.com.tw/">google</a>
+    </div>
+    <div>
+        開新網頁
+        <a href="https://www.google.com.tw/" target="_blank">開新頁到google</a>
+    </div>
+    <div>
+        下載
+        <a download href="../img/david-edwards-ruin-0003.jpg">下載圖片</a>
+    </div>
+
+    <a href="#color">
+        使用span修飾a
+        <span class="button">e04</span>
+    </a> -->
+
+</body>
+
+</html>
